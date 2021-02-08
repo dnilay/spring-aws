@@ -8,6 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
+
 @Configuration
 @ComponentScan(basePackages = "org.example")
 @PropertySource(value = {"classpath:application.properties"})
@@ -18,9 +20,9 @@ public class ApplicationConfig {
         this.environment = environment;
     }
     @Bean
-    public DataSource dataSource()
-    {
+    public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource=new ComboPooledDataSource();
+        dataSource.setDriverClass("com.mysql.jdbc.Driver");
         dataSource.setJdbcUrl(environment.getRequiredProperty("jdbc.url"));
         dataSource.setJdbcUrl(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
