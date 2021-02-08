@@ -1,0 +1,7 @@
+org/example/model/Person.class
+org/example/App.class
+org/example/service/PersonService.class
+org/example/dao/PersonDao.class
+org/example/service/PersonServiceImpl.class
+org/example/config/ApplicationConfig.class
+org/example/dao/PersonDaoImpl.class
